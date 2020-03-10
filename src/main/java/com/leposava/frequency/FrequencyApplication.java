@@ -17,7 +17,6 @@ public class FrequencyApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FrequencyApplication.class, args);
-
 	}
 
 }

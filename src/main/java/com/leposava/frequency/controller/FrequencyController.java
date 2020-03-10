@@ -81,7 +81,6 @@ public class FrequencyController {
 
         Analytics analytics = analyticsService.storeAnalytics(avarageParagraphSize, avarageSumOfTimes, theMostFrequentWord, total);
 
-
         return new ResponseEntity<>(analytics, HttpStatus.OK);
     }
 

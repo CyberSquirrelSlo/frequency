@@ -41,7 +41,7 @@ public class RandomTextClient {
 
             }
         } catch (RestClientException e) {
-
+            //this is not for the production.. instead I would user logger
             e.printStackTrace();
         }
 
