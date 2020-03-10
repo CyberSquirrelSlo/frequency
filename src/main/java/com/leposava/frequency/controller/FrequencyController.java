@@ -72,6 +72,7 @@ public class FrequencyController {
                 e.printStackTrace();
             }
         }
+        executor.shutdown();
 
         long avarageSumOfTimes = sumOfTimes / list.size();
         int avarageParagraphSize = sumAvarParagraphSize / list.size();
