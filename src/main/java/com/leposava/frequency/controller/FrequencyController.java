@@ -39,9 +39,9 @@ public class FrequencyController {
 
     @GetMapping(value = "/text", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<Analytics> getAnalytics(@RequestParam("p_start") int pStart,
-                                                    @RequestParam("p_end") int pEnd,
-                                                    @RequestParam("w_count_min") int wCountMin,
-                                                    @RequestParam("w_count_max") int wCountMax) {
+                                                  @RequestParam("p_end") int pEnd,
+                                                  @RequestParam("w_count_min") int wCountMin,
+                                                  @RequestParam("w_count_max") int wCountMax) {
         long start = System.nanoTime();
         ExecutorService executor = Executors.newCachedThreadPool();
         RandomTextClient client = new RandomTextClient();
