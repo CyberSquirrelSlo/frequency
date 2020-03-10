@@ -42,9 +42,7 @@ public class RandomTextClient {
             }
         } catch (RestClientException e) {
 
-
-        } finally {
-
+            e.printStackTrace();
         }
 
         return null;

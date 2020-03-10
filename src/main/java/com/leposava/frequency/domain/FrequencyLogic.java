@@ -68,7 +68,6 @@ public class FrequencyLogic {
         for (int i = 0; i < paragraphs.length; i++) {
             String[] words = Pattern.compile("\\s++").split(paragraphs[i]);
             paragraphsSizes.put(i, words.length);
-
         }
 
         int sum = 0;

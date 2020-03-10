@@ -18,6 +18,7 @@ public class AnalyticsServiceImp implements AnalyticsService {
     }
 
     public Analytics storeAnalytics(int avarageParagraphSize, long avarageSumOfTimes, String theMostFrequentWord, long total){
+
         Analytics analytics = new Analytics();
         analytics.setAvg_paragraph_size(avarageParagraphSize);
         analytics.setAvg_paragraph_processing_time(avarageSumOfTimes);

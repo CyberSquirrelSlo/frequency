@@ -20,14 +20,4 @@ public class FrequencyApplication {
 
 	}
 
-
-//	@Bean
-//	public CommandLineRunner demo() {
-//		return (args) -> {
-//
-//
-//
-//		};
-//	}
-
 }
