@@ -63,18 +63,18 @@ public class FrequencyLogic {
     }
 
     public static int avarageParagraphSize(String text) {
-        Map<Integer, Integer> paragraphsSizes = new HashMap<>();
+        int sum = 0;
+        int average = 0;
         String[] paragraphs = Pattern.compile("</p>\\r").split(text);
+
         for (int i = 0; i < paragraphs.length; i++) {
             String[] words = Pattern.compile("\\s++").split(paragraphs[i]);
-            paragraphsSizes.put(i, words.length);
+            sum += words.length;
+        }
+        if (sum != 0) {
+            average = sum / paragraphs.length;
         }
 
-        int sum = 0;
-        for (Map.Entry<Integer, Integer> paragraphSizesEntry : paragraphsSizes.entrySet()) {
-            sum += paragraphSizesEntry.getValue();
-        }
-        int average = sum / paragraphs.length;
         return average;
     }
 }
