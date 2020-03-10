@@ -38,7 +38,7 @@ public class FrequencyController {
     public AnalyticsRepository analyticsRepository;
 
     @GetMapping(value = "/text", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<Analytics> getAllPatients(@RequestParam("p_start") int pStart,
+    public ResponseEntity<Analytics> getAnalytics(@RequestParam("p_start") int pStart,
                                                     @RequestParam("p_end") int pEnd,
                                                     @RequestParam("w_count_min") int wCountMin,
                                                     @RequestParam("w_count_max") int wCountMax) {
@@ -86,7 +86,7 @@ public class FrequencyController {
     }
 
     @GetMapping(value = "/history", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<List<Analytics>> getAnalytics() {
+    public ResponseEntity<List<Analytics>> getHistory() {
         List<Analytics> list = analyticsService.getAnalytics();
         return new ResponseEntity<List<Analytics>>(list, HttpStatus.OK);
     }
