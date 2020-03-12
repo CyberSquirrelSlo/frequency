@@ -1,6 +1,6 @@
 package com.leposava.frequency.client;
 
-import com.leposava.frequency.domain.FrequencyLogic;
+import com.leposava.frequency.domain.FrequencyManager;
 import com.leposava.frequency.entity.AnalyticsMiddleResults;
 import com.leposava.frequency.entity.RandomText;
 
@@ -28,8 +28,8 @@ public class RandomTextClientWorker implements Callable<AnalyticsMiddleResults> 
         RandomText randomText = client.getRandomText(numbOfParagraphs, minWords, maxWords);
 
         long paragraphStart = System.nanoTime();
-        String theMostFrequentWord = FrequencyLogic.theMostFrequentWord(FrequencyLogic.getArrayFormTextParagraphs(randomText.getText_out()));
-        int avarageParagraphSize = FrequencyLogic.avarageParagraphSize(randomText.getText_out());
+        String theMostFrequentWord = FrequencyManager.theMostFrequentWord(FrequencyManager.getArrayFormTextParagraphs(randomText.getText_out()));
+        int avarageParagraphSize = FrequencyManager.avarageParagraphSize(randomText.getText_out());
         long paragraphEnd = System.nanoTime() - paragraphStart;
 
         AnalyticsMiddleResults analyticsMiddleResults = new AnalyticsMiddleResults();

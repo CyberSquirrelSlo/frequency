@@ -2,7 +2,7 @@ package com.leposava.frequency.controller;
 
 import com.leposava.frequency.client.RandomTextClient;
 import com.leposava.frequency.client.RandomTextClientWorker;
-import com.leposava.frequency.domain.FrequencyLogic;
+import com.leposava.frequency.domain.FrequencyManager;
 import com.leposava.frequency.entity.Analytics;
 import com.leposava.frequency.entity.AnalyticsMiddleResults;
 import com.leposava.frequency.repository.AnalyticsRepository;
@@ -54,32 +54,27 @@ public class FrequencyController {
 
 
         long sumOfTimes = 0;
-        int sumAvarParagraphSize = 0;
+        int sumAverParagraphSize = 0;
 
         Map<String, Integer> mostFrequentWords = new HashMap<>();
         String theMostFrequentWord = "";
         for (Future<AnalyticsMiddleResults> fut : list) {
             try {
-
                 sumOfTimes += fut.get().getParagraphTimeProcessing();
-                sumAvarParagraphSize += fut.get().getAvarageParagraphSize();
-
-                theMostFrequentWord = FrequencyLogic.theMostFrequentWord(mostFrequentWords, fut.get().getTheMostFrequentWord());
-
+                sumAverParagraphSize += fut.get().getAvarageParagraphSize();
+                theMostFrequentWord = FrequencyManager.theMostFrequentWord(mostFrequentWords, fut.get().getTheMostFrequentWord());
             } catch (InterruptedException | ExecutionException e) {
-
-                //this is not for the production.. instead I would user logger
                 e.printStackTrace();
             }
         }
         executor.shutdown();
 
-        long avarageSumOfTimes = sumOfTimes / list.size();
-        int avarageParagraphSize = sumAvarParagraphSize / list.size();
+        long averageSumOfTimes = sumOfTimes / list.size();
+        int averageParagraphSize = sumAverParagraphSize / list.size();
 
         long total = System.nanoTime() - start;
 
-        Analytics analytics = analyticsService.storeAnalytics(avarageParagraphSize, avarageSumOfTimes, theMostFrequentWord, total);
+        Analytics analytics = analyticsService.storeAnalytics(averageParagraphSize, averageSumOfTimes, theMostFrequentWord, total);
 
         return new ResponseEntity<>(analytics, HttpStatus.OK);
     }
